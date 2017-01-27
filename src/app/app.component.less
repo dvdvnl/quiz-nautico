@@ -1,0 +1,71 @@
+@background-color: #f6f6f6;
+@border-color: #ccc;
+@def: 10px;
+@success: rgb(39, 152, 0);
+@success-bg: fade(@success, 15);
+@danger: rgb(177, 0, 0);
+@danger-bg: fade(@danger, 15);
+
+#quiz{
+
+	margin-bottom: @def * 5;
+
+	// quiz
+	.row{
+
+		vertical-align: top;
+
+		+ .row{
+			border-top: 1px solid @border-color;
+		}
+
+		&.head, &.quiz{padding: @def / 2;}
+
+		&.head{font-weight: bold;}
+
+		&.quiz{
+			&:nth-child(odd){background: @background-color;}
+			&.success{background: @success-bg;}
+			&.danger{background: @danger-bg;}
+
+			// question
+			p.q{font-weight: bold;}
+
+			// answer
+			ul.ans{
+				li{
+					cursor: pointer;
+					line-height: 175%;
+
+					&.success{color:@success;}
+
+					&.clicked{
+						color:@danger;
+						font-weight: bold;
+
+						&.success{color:@success;}
+					}
+				}
+			}
+		}
+
+		// figure
+		.fig{
+			text-align:right;
+
+			img{max-width: 100px;}
+		}
+	}
+}
+
+footer{
+	background: @background-color;
+	border-top: 1px top @border-color;
+	bottom: 0;
+	// height: @def * 2;
+	// left: 0;
+	padding: @def / 2;
+	position: fixed;
+	// right: 0;
+	width: 100%;
+}

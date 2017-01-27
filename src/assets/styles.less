@@ -1,0 +1,29 @@
+@import "../../node_modules/font-awesome/less/font-awesome";
+@import "../../node_modules/bootstrap/less/bootstrap";
+@import "variables";
+
+#quiz{
+	padding-top: @header-height + @def;
+
+	header{
+		background: @gray-darker;
+		color: @gray-lighter;
+		height: @header-height;
+		line-height: @header-height - (@def * 2);
+		padding: @def;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+
+		span.title{
+			font-size: 125%;
+			font-weight: bold;
+		}
+	}
+
+	footer{
+		color: @gray;
+		font-size: 80%;
+	}
+}

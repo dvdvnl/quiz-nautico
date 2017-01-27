@@ -1,0 +1,69 @@
+<section id="quiz">
+
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-5 hidden-xs">
+					<span class="title">Quiz Nautico Base</span>
+				</div>
+				<div class="col-sm-3 col-xs-5">
+					<i class="fa fa-fw fa-list"></i> {{stats.responses}}<span class="hidden-xs">/{{qs.length}}</span> <i class="fa fa-fw fa-check"></i> {{stats.responses - stats.errors}}
+				</div>
+				<div class="col-sm-4 col-xs-7">
+					<div class="btn-group btn-group-md pull-right">
+						<!-- <button class="btn btn-default">
+							<i class="fa fa-fw fa-search"></i>
+						</button> -->
+						<button class="btn btn-default" (click)="hideAnswered = !hideAnswered" [ngClass]="{'active':!hideAnswered}">
+							<!-- <i class="fa fa-fw" [ngClass]="{'fa-eye':!hideAnswered, 'fa-eye-slash':hideAnswered}"></i> -->
+							<i class="fa fa-fw fa-list"></i>
+						</button>
+						<!-- <button class="btn btn-default" (click)="hideCorrect = !hideCorrect" [ngClass]="{'active':!hideCorrect}">
+							<i class="fa fa-fw" [ngClass]="{'fa-eye':!hideCorrect, 'fa-eye-slash':hideCorrect}"></i>
+							<i class="fa fa-fw fa-check"></i>
+						</button> -->
+						<button class="btn btn-default" (click)="reset('Sei sicuro di voler risettare tutti i quiz?')">
+							<i class="fa fa-fw fa-undo"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="container">
+		<section>
+			<div class="head row">
+				<div class="col-md-1">#</div>
+				<div class="col-md-8">Domanda</div>
+				<div class="col-md-3"></div>
+			</div>
+
+			<div class="quiz row" *ngFor="let q of qs" [ngClass]="{'success':isCorrect(q.id), 'danger':!isCorrect(q.id) && isAnswered(q.id), 'hidden':(isAnswered(q.id) && hideAnswered) || (isCorrect(q.id)  && hideCorrect)}">
+				<div class="col-md-1">
+					{{q.id}}
+				</div>
+				<div class="col-md-8">
+					<p class="q">{{q.txt}}</p>
+					<ul class="ans">
+						<li *ngFor="let a of q.ans" (click)="evaluate(q, a)" [ngClass]="{'clicked':isClicked(q, a), 'success':isAnswered(q.id) && a.mark, 'danger':isAnswered(q.id) && !isCorrect(q.id)}">
+							{{a.txt}}
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-3 fig">
+					<img *ngIf="q.fig == 1" src="assets/figures/{{pad(q.id, 4)}}.png" alt="Figure {{pad(q.id, 4)}}">
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<footer>
+		<div class="container text-center">
+			<!-- <span class="pull-left"><i class="fa fa-fw fa-search"></i></span> -->
+			<a href="http://www.davole.com" target="_blank"><i class="fa fa-fw fa-anchor"></i></a>
+			<a href="#quiz" class="pull-right"><i class="fa fa-fw fa-arrow-up"></i></a>
+		</div>
+	</footer>
+
+</section>
