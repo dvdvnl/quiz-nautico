@@ -2,28 +2,115 @@
 @import "../../node_modules/bootstrap/less/bootstrap";
 @import "variables";
 
+input:focus{box-shadow: none !important;}
+
 #quiz{
-	padding-top: @header-height + @def;
+	overflow-x: auto;
+	padding: @header-height + @def * 2 0;
+
+	.small{font-size: 85%;}
+	.split{
+		border-top: 1px solid @gray-light;
+		margin-top: @def * 5;
+		padding-top: @def * 5;
+	}
 
 	header{
 		background: @gray-darker;
-		color: @gray-lighter;
-		height: @header-height;
-		line-height: @header-height - (@def * 2);
-		padding: @def;
 		position: fixed;
 		top: 0;
 		width: 100%;
-		z-index: 1;
+		z-index: 2;
 
-		span.title{
+		#header{
+			box-sizing: content-box;
+			color: @gray-light;
+			height: @header-height;
+			line-height: @header-height;
+			padding: @def;
+		}
+
+		#title{
 			font-size: 125%;
 			font-weight: bold;
+		}
+
+		#flyout{
+			background: @gray;
+			padding: @def 0;
+		}
+	}
+
+	#questions{
+		div.row{
+			vertical-align: top;
+			padding: @def / 2;
+
+			+ .row{border-top: 1px solid @gray-light;}
+			&:nth-child(odd){background: @gray-lighter;}
+			&.success{background: @success-bg;}
+			&.danger{background: @danger-bg;}
+			div:nth-child(1){font-weight: bold;}
+			p.q{font-weight: bold;}
+			ul.ans{
+				list-style-type: lower-alpha;
+
+				li{
+					cursor: pointer;
+					line-height: 175%;
+
+					&.success{color:@success;}
+					&.clicked{
+						color: @danger;
+						font-weight: bold;
+
+						&.success{color:@success;}
+					}
+				}
+			}
+			.fig{
+				padding: @def 0;
+				@media (min-width: @screen-sm-min){text-align: right;}
+				@media (max-width: @screen-sm-min){text-align: center;}
+
+				img{
+					border: 1px solid @gray-lighter;
+					max-width: 100px;
+				}
+			}
 		}
 	}
 
 	footer{
-		color: @gray;
-		font-size: 80%;
+		background: @gray-lighter;
+		bottom: 0;
+		border-top: 1px solid @gray-light;
+		position: fixed;
+		width: 100%;
+		z-index: 1;
+
+		#footer{
+			color: @gray;
+			padding: @def / 2 0;
+			position: relative;
+			z-index: 2;
+
+			span, a{
+				color: @gray-dark;
+				cursor: pointer;
+				text-decoration: none;
+			}
+		}
+
+		#info{
+			background: inherit;
+			height: 100%;
+			left: 0;
+			padding-top: @header-height + @def * 2;
+			position: fixed;
+			top: 0;
+			width: 100%;
+			z-index: 1;
+		}
 	}
 }

@@ -5,10 +5,12 @@ import { HttpModule } from '@angular/http';
 import { LocalStorageModule } from 'angular-2-local-storage';
 
 import { AppComponent } from './app.component';
+import { ObjectfilterPipe } from './objectfilter.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ObjectfilterPipe
   ],
   imports: [
     BrowserModule,

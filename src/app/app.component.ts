@@ -2,22 +2,27 @@ import { Component } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less']
+	selector: 'app-root',
+	templateUrl: './app.component.html'
 })
 export class AppComponent {
 
 	public qs;
 	public stats = {};
-
-	public hideAnswered = false;
-	public hideCorrect = false;
+	public search:string;
+	public flyout:boolean = false;
+	public info:boolean = false;
+	public hideAnswered:boolean = false;
+	public hideCorrect:boolean = false;
 
 	private _rts = {};
 
 	constructor(private _localStorageService: LocalStorageService){
-		this.qs = require('../assets/quiz.json');
+		let qs = require('../assets/quiz.json');
+		this.qs = qs.map(q => {
+			q.index = ['#' + q.id, q.txt, q.ans[0]['txt'], q.ans[1]['txt'], q.ans[2]['txt']].join('§');
+			return q;
+		});
 
 		let _rts = _localStorageService.get('rts');
 		if(_rts)

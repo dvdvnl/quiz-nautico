@@ -1,11 +1,20 @@
+// custom
+@background-color: #f6f6f6;
+@border-color: #ccc;
+@def: 10px;
+@success: rgb(39, 152, 0);
+@success-bg: fade(@success, 15);
+@danger: rgb(177, 0, 0);
+@danger-bg: fade(@danger, 15);
 @def: 5px;
-@header-height: @def * 10;
+@header-height: 34px;
 
+// bootstrap:
 @gray-darker: darken(@gray, 20%);
 @gray-dark: darken(@gray, 10%);
-@gray: #475075;
-@gray-light: lighten(@gray, 10%);
-@gray-lighter: lighten(@gray, 30%);
+@gray: #5d6278;
+@gray-light: lighten(@gray, 25%);
+@gray-lighter: lighten(@gray, 50%);
 // @brand-primary: ;
 // @brand-success: ;
 // @brand-info: ;
@@ -49,9 +58,9 @@
 // @padding-xs-horizontal: ;
 // @line-height-large: ;
 // @line-height-small: ;
-// @border-radius-base: ;
-// @border-radius-large: ;
-// @border-radius-small: ;
+@border-radius-base: 0;
+@border-radius-large: 0;
+@border-radius-small: 0;
 // @component-active-color: ;
 // @component-active-bg: ;
 // @caret-width-base: ;
@@ -83,16 +92,16 @@
 // @btn-danger-bg: ;
 // @btn-danger-border: ;
 // @btn-link-disabled-color: ;
-// @btn-border-radius-base: ;
-// @btn-border-radius-large: ;
-// @btn-border-radius-small: ;
+@btn-border-radius-base: 0;
+@btn-border-radius-large: 0;
+@btn-border-radius-small: 0;
 // @input-bg: ;
 // @input-bg-disabled: ;
 // @input-color: ;
 // @input-border: ;
-// @input-border-radius: ;
-// @input-border-radius-large: ;
-// @input-border-radius-small: ;
+@input-border-radius: 0;
+@input-border-radius-large: 0;
+@input-border-radius-small: 0;
 // @input-border-focus: ;
 // @input-color-placeholder: ;
 // @input-height-base: ;
@@ -150,7 +159,7 @@
 // @container-lg: ;
 // @navbar-height: ;
 // @navbar-margin-bottom: ;
-// @navbar-border-radius: ;
+@navbar-border-radius: 0;
 // @navbar-padding-horizontal: ;
 // @navbar-padding-vertical: ;
 // @navbar-collapse-max-height: ;
@@ -197,7 +206,7 @@
 // @nav-tabs-active-link-hover-border-color: ;
 // @nav-tabs-justified-link-border-color: ;
 // @nav-tabs-justified-active-link-border-color: ;
-// @nav-pills-border-radius: ;
+@nav-pills-border-radius: 0;
 // @nav-pills-active-link-hover-bg: ;
 // @nav-pills-active-link-hover-color: ;
 // @pagination-color: ;
@@ -214,7 +223,7 @@
 // @pagination-disabled-border: ;
 // @pager-bg: ;
 // @pager-border: ;
-// @pager-border-radius: ;
+@pager-border-radius: 0;
 // @pager-hover-bg: ;
 // @pager-active-bg: ;
 // @pager-active-color: ;
@@ -275,7 +284,7 @@
 // @modal-md: ;
 // @modal-sm: ;
 // @alert-padding: ;
-// @alert-border-radius: ;
+@alert-border-radius: 0;
 // @alert-link-font-weight: ;
 // @alert-success-bg: ;
 // @alert-success-text: ;
@@ -291,7 +300,7 @@
 // @alert-danger-border: ;
 // @progress-bg: ;
 // @progress-bar-color: ;
-// @progress-border-radius: ;
+@progress-border-radius: 0;
 // @progress-bar-bg: ;
 // @progress-bar-success-bg: ;
 // @progress-bar-warning-bg: ;
@@ -299,7 +308,7 @@
 // @progress-bar-info-bg: ;
 // @list-group-bg: ;
 // @list-group-border: ;
-// @list-group-border-radius: ;
+@list-group-border-radius: 0;
 // @list-group-hover-bg: ;
 // @list-group-active-color: ;
 // @list-group-active-bg: ;
@@ -315,7 +324,7 @@
 // @panel-body-padding: ;
 // @panel-heading-padding: ;
 // @panel-footer-padding: ;
-// @panel-border-radius: ;
+@panel-border-radius: 0;
 // @panel-inner-border: ;
 // @panel-footer-bg: ;
 // @panel-default-text: ;
@@ -339,7 +348,7 @@
 // @thumbnail-padding: ;
 // @thumbnail-bg: ;
 // @thumbnail-border: ;
-// @thumbnail-border-radius: ;
+@thumbnail-border-radius: 0;
 // @thumbnail-caption-color: ;
 // @thumbnail-caption-padding: ;
 // @well-bg: ;
@@ -351,7 +360,7 @@
 // @badge-active-bg: ;
 // @badge-font-weight: ;
 // @badge-line-height: ;
-// @badge-border-radius: ;
+@badge-border-radius: 0;
 // @breadcrumb-padding-vertical: ;
 // @breadcrumb-padding-horizontal: ;
 // @breadcrumb-bg: ;

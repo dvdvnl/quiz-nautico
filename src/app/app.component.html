@@ -1,29 +1,43 @@
 <section id="quiz">
-
 	<header>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-5 hidden-xs">
-					<span class="title">Quiz Nautico Base</span>
+		<div id="header" class="containerx">
+			<div class="container">
+				<div class="row">
+					<div id="title" class="col-md-4 col-xs-4">
+						<i class="fa fa-fw fa-anchor"></i>
+						<span class="hidden-xs">Quiz Nautico Base</span>
+					</div>
+					<div class="col-md-5 col-xs-4 text-center">
+						<i class="fa fa-fw fa-list"></i> {{stats.responses | number}}<span class="hidden-xs">/{{qs.length | number}}</span>
+						<i class="fa fa-fw fa-check"></i> {{stats.responses - stats.errors}} <span class="hidden-xs" *ngIf="stats.responses > 0">({{((stats.responses - stats.errors) / stats.responses) | percent:'1.0-1' }})</span>
+					</div>
+					<div class="col-md-3 col-xs-4">
+						<div class="btn-group btn-group-md pull-right">
+							<button class="btn btn-default" [ngClass]="{'active':flyout}" (click)="flyout = !flyout">
+								<i class="fa fa-fw fa-filter"></i>
+							</button>
+							<button class="btn btn-default" (click)="reset('Sei sicuro di voler risettare tutti i quiz?')">
+								<i class="fa fa-fw fa-undo"></i>
+							</button>
+						</div>
+					</div>
 				</div>
-				<div class="col-sm-3 col-xs-5">
-					<i class="fa fa-fw fa-list"></i> {{stats.responses}}<span class="hidden-xs">/{{qs.length}}</span> <i class="fa fa-fw fa-check"></i> {{stats.responses - stats.errors}}
-				</div>
-				<div class="col-sm-4 col-xs-7">
-					<div class="btn-group btn-group-md pull-right">
-						<!-- <button class="btn btn-default">
-							<i class="fa fa-fw fa-search"></i>
-						</button> -->
+			</div>
+		</div>
+
+		<div id="flyout" *ngIf="flyout">
+			<div class="container">
+				<div class="input-group">
+					<input type="text" class="form-control" id="search" [(ngModel)]="search" placeholder="filtro">
+					<div class="input-group-btn">
+						<button class="btn btn-default" (click)="search = ''">
+							<i class="fa fa-fw fa-times-circle-o"></i>
+						</button>
 						<button class="btn btn-default" (click)="hideAnswered = !hideAnswered" [ngClass]="{'active':!hideAnswered}">
-							<!-- <i class="fa fa-fw" [ngClass]="{'fa-eye':!hideAnswered, 'fa-eye-slash':hideAnswered}"></i> -->
 							<i class="fa fa-fw fa-list"></i>
 						</button>
-						<!-- <button class="btn btn-default" (click)="hideCorrect = !hideCorrect" [ngClass]="{'active':!hideCorrect}">
-							<i class="fa fa-fw" [ngClass]="{'fa-eye':!hideCorrect, 'fa-eye-slash':hideCorrect}"></i>
+						<button class="btn btn-default" (click)="hideCorrect = !hideCorrect" [ngClass]="{'active':!hideCorrect}">
 							<i class="fa fa-fw fa-check"></i>
-						</button> -->
-						<button class="btn btn-default" (click)="reset('Sei sicuro di voler risettare tutti i quiz?')">
-							<i class="fa fa-fw fa-undo"></i>
 						</button>
 					</div>
 				</div>
@@ -31,38 +45,52 @@
 		</div>
 	</header>
 
-	<div class="container">
-		<section>
-			<div class="head row">
-				<div class="col-md-1">#</div>
-				<div class="col-md-8">Domanda</div>
-				<div class="col-md-3"></div>
+	<section id="questions" class="container">
+		<div class="row" *ngFor="let q of qs | objectfilter:search:['index']" [ngClass]="{'success':isCorrect(q.id), 'danger':!isCorrect(q.id) && isAnswered(q.id), 'hidden':(isAnswered(q.id) && hideAnswered) || (isCorrect(q.id)  && hideCorrect)}">
+			<div class="col-sm-1">
+				{{q.id}}
 			</div>
-
-			<div class="quiz row" *ngFor="let q of qs" [ngClass]="{'success':isCorrect(q.id), 'danger':!isCorrect(q.id) && isAnswered(q.id), 'hidden':(isAnswered(q.id) && hideAnswered) || (isCorrect(q.id)  && hideCorrect)}">
-				<div class="col-md-1">
-					{{q.id}}
-				</div>
-				<div class="col-md-8">
-					<p class="q">{{q.txt}}</p>
-					<ul class="ans">
-						<li *ngFor="let a of q.ans" (click)="evaluate(q, a)" [ngClass]="{'clicked':isClicked(q, a), 'success':isAnswered(q.id) && a.mark, 'danger':isAnswered(q.id) && !isCorrect(q.id)}">
-							{{a.txt}}
-						</li>
-					</ul>
-				</div>
-				<div class="col-md-3 fig">
-					<img *ngIf="q.fig == 1" src="assets/figures/{{pad(q.id, 4)}}.png" alt="Figure {{pad(q.id, 4)}}">
-				</div>
+			<div class="col-sm-8">
+				<p class="q">{{q.txt}}</p>
+				<ul class="ans">
+					<li *ngFor="let a of q.ans" (click)="evaluate(q, a)" [ngClass]="{'clicked':isClicked(q, a), 'success':isAnswered(q.id) && a.mark, 'danger':isAnswered(q.id) && !isCorrect(q.id)}">
+						{{a.txt}}
+					</li>
+				</ul>
 			</div>
-		</section>
-	</div>
+			<div class="col-sm-3 fig">
+				<img *ngIf="q.fig == 1" src="assets/figures/{{pad(q.id, 4)}}.png" alt="Figure {{pad(q.id, 4)}}">
+			</div>
+		</div>
+	</section>
 
 	<footer>
-		<div class="container text-center">
-			<!-- <span class="pull-left"><i class="fa fa-fw fa-search"></i></span> -->
-			<a href="http://www.davole.com" target="_blank"><i class="fa fa-fw fa-anchor"></i></a>
-			<a href="#quiz" class="pull-right"><i class="fa fa-fw fa-arrow-up"></i></a>
+		<div id="info" *ngIf="info">
+			<div class="container">
+				<h1>Quiz Nautico Base</h1>
+				<p>
+					Quest'applicazione è basata sui quiz pubblicati/aggiornati dalla <a href="http://www.guardiacostiera.gov.it/genova" title="Guardia Costiera di Genova" target="_blank">Guardia Costiera di Genova</a> il 21.07.2016.<br>
+					Per eventuali errori e/o suggerimenti <a href="https://github.com/dvdvnl/quiz-nautico-base/issues" target="_blank">seguire questo link</a>.
+				</p>
+				<h2>Risorse e link utili</h2>
+				<ul>
+					<li>
+						<i class="fa fa-fw fa-github"></i> <a href="https://github.com/dvdvnl/quiz-nautico-base" target="_blank">Repository</a>
+					</li>
+					<li>
+						<i class="fa fa-fw fa-font-awesome"></i>
+						<a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a>
+					</li>
+				</ul>
+				<p class="text-center small split">
+					<a href="http://davole.com" title="davole.com" target="_blank"><img src="assets/davole.png" alt="www.davole.com"> by davole</a>
+				</p>
+			</div>
+		</div>
+
+		<div id="footer" class="container text-center" [ngClass]="{'small':!info}">
+			<span title="Informazioni" (click)="info = !info"><i class="fa fa-fw fa-anchor"></i></span>
+			<a href="#quiz" title="Torna in alto" class="pull-right"><i class="fa fa-fw fa-arrow-up"></i></a>
 		</div>
 	</footer>
 
