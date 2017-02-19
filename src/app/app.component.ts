@@ -35,6 +35,10 @@ export class AppComponent {
 			this.stats['errors'] = this.stats['responses'] = 0;
 	}
 
+	public percentage():number {
+		return (this.stats['responses'] - this.stats['errors']) / this.stats['responses'];
+	}
+
 	public evaluate(q, a){
 		if(this.isAnswered(q.id)) return;
 
