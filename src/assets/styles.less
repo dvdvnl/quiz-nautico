@@ -57,7 +57,13 @@ input:focus{box-shadow: none !important;}
 
 				li{
 					cursor: pointer;
-					line-height: 175%;
+					// line-height: 0%;
+
+					+ li{
+						border-top: 1px solid @gray-light;
+						margin-top: @def / 2;
+						padding-top: @def / 2;
+					}
 
 					&.success{color:@success;}
 					&.clicked{
@@ -85,6 +91,7 @@ input:focus{box-shadow: none !important;}
 		background: @gray-lighter;
 		bottom: 0;
 		border-top: 1px solid @gray-light;
+		padding: @def 0;
 		position: fixed;
 		width: 100%;
 		z-index: 1;
