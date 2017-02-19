@@ -10325,15 +10325,11 @@
         "ans": [
             {
                 "mark": false,
-                "txt": ""
+                "txt": "i fenomeni meteorologici in corso."
             },
             {
                 "mark": true,
-                "txt": "la situazione barica, gli eventuali sistemi frontali e la circolazione atmosferica"
-            },
-            {
-                "mark": false,
-                "txt": ""
+                "txt": "la situazione barica, gli eventuali sistemi frontali e la circolazione atmosferica sul mar Mediterraneo."
             },
             {
                 "mark": false,
@@ -10343,12 +10339,8 @@
     },
     {
         "id": 571,
-        "txt": "",
+        "txt": "Il Libeccio spira:",
         "ans": [
-            {
-                "mark": false,
-                "txt": ""
-            },
             {
                 "mark": false,
                 "txt": " verso Sud-Ovest."
@@ -10365,12 +10357,8 @@
     },
     {
         "id": 572,
-        "txt": "",
+        "txt": "L'anemoscopio misura:",
         "ans": [
-            {
-                "mark": false,
-                "txt": ""
-            },
             {
                 "mark": true,
                 "txt": " la direzione del vento."
@@ -10387,12 +10375,8 @@
     },
     {
         "id": 573,
-        "txt": "",
+        "txt": "Quali informazioni tra le seguenti sono riportate nel Meteomar:",
         "ans": [
-            {
-                "mark": false,
-                "txt": ""
-            },
             {
                 "mark": false,
                 "txt": "sorgere e tramonto del sole, per valutare la formazione delle nebbie."
@@ -10403,18 +10387,14 @@
             },
             {
                 "mark": true,
-                "txt": "“Avvisi” (es. di temporali), in corso o previsti."
+                "txt": "\"Avvisi\" (es. di temporali), in corso o previsti."
             }
         ]
     },
     {
         "id": 574,
-        "txt": "",
+        "txt": "Il Grecale spira:",
         "ans": [
-            {
-                "mark": false,
-                "txt": ""
-            },
             {
                 "mark": false,
                 "txt": " verso Sud - Ovest."
@@ -10431,12 +10411,8 @@
     },
     {
         "id": 575,
-        "txt": "",
+        "txt": "Quale vento spira da 135 gradi?",
         "ans": [
-            {
-                "mark": false,
-                "txt": ""
-            },
             {
                 "mark": false,
                 "txt": " Grecale"
@@ -10453,12 +10429,8 @@
     },
     {
         "id": 576,
-        "txt": "",
+        "txt": "Da Nord - Est spira il:",
         "ans": [
-            {
-                "mark": false,
-                "txt": ""
-            },
             {
                 "mark": false,
                 "txt": " Levante"
