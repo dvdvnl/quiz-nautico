@@ -20,7 +20,7 @@ export class AppComponent {
 	constructor(private _localStorageService: LocalStorageService){
 		let qs = require('../assets/quiz.json');
 		this.qs = qs.map(q => {
-			q.index = ['#' + q.id, q.txt, q.ans[0]['txt'], q.ans[1]['txt'], q.ans[2]['txt']].join('§');
+			q.index = [q.id, q.txt, q.ans[0]['txt'], q.ans[1]['txt'], q.ans[2]['txt']].join('');
 			return q;
 		});
 
@@ -74,6 +74,17 @@ export class AppComponent {
 		this.stats['errors'] = this.stats['responses'] = 0;
 		this._rts = {};
 		localStorage.clear();
+	}
+
+	public resetErrors(dialog:string){
+		if(!confirm(dialog)) return;
+		for(let i in this._rts){
+			if(!this._rts[i].mark){
+				this.stats['errors']--;
+				this.stats['responses']--;
+				delete this._rts[i];
+			}
+		}
 	}
 
 	public pad(num, size) {

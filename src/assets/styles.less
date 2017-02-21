@@ -4,44 +4,57 @@
 
 input:focus{box-shadow: none !important;}
 
+h1{font-size: 145%;}
+
 #quiz{
 	overflow-x: auto;
-	padding: @header-height + @def * 2 0;
-
-	.small{font-size: 85%;}
-	.split{
-		border-top: 1px solid @gray-light;
-		margin-top: @def * 5;
-		padding-top: @def * 5;
-	}
 
 	header{
 		background: @gray-darker;
+		box-sizing: content-box;
+		color: @gray-light;
+		height: @header-height;
+		line-height: @header-height;
+		padding: @def / 2;
 		position: fixed;
 		top: 0;
 		width: 100%;
 		z-index: 2;
 
-		#header{
-			box-sizing: content-box;
-			color: @gray-light;
-			height: @header-height;
-			line-height: @header-height;
-			padding: @def;
-		}
+		#title{font-size: 125%;}
+		#menu-toggle{cursor: pointer;}
+	}
 
-		#title{
-			font-size: 125%;
-			font-weight: bold;
-		}
+	#sidebar{
+		background: fadeout(@gray-lighter, 10);
+		bottom: 0;
+		padding: @def;
+		position: fixed;
+		right: 0;
+		top: @header-height + @def;
+		z-index: 1;
 
-		#flyout{
-			background: @gray;
-			padding: @def 0;
+		@media(max-width:@screen-sm-min){width: 100%}
+		@media(min-width:@screen-sm-min){width: calc(100%/3)}
+
+		#title{text-align: center;}		
+		#credits{
+			bottom: @def;
+			right: 0;
+			position: absolute;
+			width: 100%;
+
+			img:not(:hover), i:not(:hover){
+    			filter: grayscale(100%);
+				-webkit-filter: grayscale(100%);
+			}
 		}
 	}
 
+
 	#questions{
+		margin-top: @header-height + @def;
+
 		div.row{
 			vertical-align: top;
 			padding: @def / 2;
@@ -57,12 +70,12 @@ input:focus{box-shadow: none !important;}
 
 				li{
 					cursor: pointer;
-					// line-height: 0%;
+					line-height: 125%;
 
 					+ li{
 						border-top: 1px solid @gray-light;
-						margin-top: @def / 2;
-						padding-top: @def / 2;
+						margin-top: @def;
+						padding-top: @def;
 					}
 
 					&.success{color:@success;}
@@ -84,40 +97,6 @@ input:focus{box-shadow: none !important;}
 					max-width: 100px;
 				}
 			}
-		}
-	}
-
-	footer{
-		background: @gray-lighter;
-		bottom: 0;
-		border-top: 1px solid @gray-light;
-		padding: @def 0;
-		position: fixed;
-		width: 100%;
-		z-index: 1;
-
-		#footer{
-			color: @gray;
-			padding: @def / 2 0;
-			position: relative;
-			z-index: 2;
-
-			span, a{
-				color: @gray-dark;
-				cursor: pointer;
-				text-decoration: none;
-			}
-		}
-
-		#info{
-			background: inherit;
-			height: 100%;
-			left: 0;
-			padding-top: @header-height + @def * 2;
-			position: fixed;
-			top: 0;
-			width: 100%;
-			z-index: 1;
 		}
 	}
 }

@@ -1,58 +1,57 @@
 <section id="quiz">
-	<header>
-		<div id="header" class="containerx">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3 hidden-xs" id="title">
-						<i class="fa fa-fw fa-anchor"></i>
-						<span class="hidden-xs">Quiz Nautico Base</span>
-					</div>
-					<div class="col-md-6 col-xs-8 text-center">
-						<div class="row">
-							<div class="col-md-4 col-xs-4">
-								<i class="fa fa-fw fa-list"></i> {{stats.responses | number}}<span class="hidden-xs">/{{qs.length | number}}</span>
-							</div>
-							<div class="col-md-4 col-xs-4">
-								<i class="fa fa-fw fa-check"></i> {{stats.responses - stats.errors}}
-							</div>
-							<div class="col-md-4 col-xs-4">
-								<span class="label" [ngClass]="{'label-success':percentage() > 0.85, 'label-danger':percentage() < 0.85}" *ngIf="stats.responses > 0">{{percentage() | percent:'1.0-0' }}</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-xs-4">
-						<div class="btn-group btn-group-md pull-right">
-							<button class="btn btn-default" [ngClass]="{'active':flyout}" (click)="flyout = !flyout">
-							<i class="fa fa-fw fa-filter"></i>
-						</button>
-							<button class="btn btn-default" (click)="reset('Sei sicuro di voler risettare tutti i quiz?')">
-							<i class="fa fa-fw fa-undo"></i>
-						</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 
-		<div id="flyout" *ngIf="flyout">
-			<div class="container">
-				<div class="input-group">
-					<input type="text" class="form-control" id="search" [(ngModel)]="search" placeholder="filtro">
-					<div class="input-group-btn">
-						<button class="btn btn-default" (click)="search = ''">
-							<i class="fa fa-fw fa-times-circle-o"></i>
-						</button>
-						<button class="btn btn-default" (click)="hideAnswered = !hideAnswered" [ngClass]="{'active':!hideAnswered}">
-							<i class="fa fa-fw fa-list"></i>
-						</button>
-						<button class="btn btn-default" (click)="hideCorrect = !hideCorrect" [ngClass]="{'active':!hideCorrect}">
-							<i class="fa fa-fw fa-check"></i>
-						</button>
-					</div>
+	<header>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-4" id="title">
+					<i class="fa fa-fw fa-anchor"></i>
+				</div>
+				<div class="col-xs-4 text-center">
+					<span class="label" [ngClass]="{'label-success':percentage() > 0.85, 'label-danger':percentage() < 0.85}" *ngIf="stats.responses > 0">
+						{{(stats.responses - stats.errors) | number}}/{{stats.responses | number}} ({{percentage() | percent:'1.0-0' }})
+					</span>
+				</div>
+				<div class="col-xs-4 text-right">
+					<i id="menu-toggle" class="fa fa-fw fa-bars" (click)="flyout = !flyout"></i>
 				</div>
 			</div>
 		</div>
 	</header>
+
+	<aside id="sidebar" *ngIf="flyout">
+		<div class="container-fluid">
+			<h1 id="title">Quiz Nautico Base</h1>
+			<div class="form-group">
+				<div class="input-group">
+					<input type="text" class="form-control" id="search" [(ngModel)]="search" placeholder="filtro">
+					<div class="input-group-btn">
+						<a class="btn btn-default" (click)="search = ''">
+							<i class="fa fa-fw fa-times-circle-o"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<a class="btn btn-default btn-block" (click)="hideAnswered = !hideAnswered" [ngClass]="{'active':hideAnswered}"><i class="fa fa-fw fa-list"></i> nascondi risposte</a>
+				<a class="btn btn-default btn-block" (click)="hideCorrect = !hideCorrect" [ngClass]="{'active':hideCorrect}"><i class="fa fa-fw fa-check"></i> nascondi corrette</a>
+			</div>
+			<div class="form-group">
+				<a class="btn btn-danger btn-block" (click)="resetErrors('Sicuro?')"><i class="fa fa-fw fa-exclamation-circle"></i> risetta errori</a>
+				<a class="btn btn-danger btn-block" (click)="reset('Sicuro?')"><i class="fa fa-fw fa-undo"></i> risetta risposte</a>
+			</div>
+		</div>
+		<footer id="credits">
+			<div class="row text-center">
+				<div class="col-xs-4 col-xs-offset-4">
+					<a href="http://davole.com/" title="by davole.com" target="_blank"><img src="assets/davole.png" alt="by davole.com"></a>
+				</div>
+				<div class="col-xs-4">
+					<a href="https://github.com/dvdvnl/quiz-nautico-base" title="App repository on GitHub" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+				</div>
+			</div>
+		</footer>
+	</aside>
+
 
 	<section id="questions" class="container">
 		<div class="row" *ngFor="let q of qs | objectfilter:search:['index']" [ngClass]="{'success':isCorrect(q.id), 'danger':!isCorrect(q.id) && isAnswered(q.id), 'hidden':(isAnswered(q.id) && hideAnswered) || (isCorrect(q.id)  && hideCorrect)}">
@@ -72,36 +71,5 @@
 			</div>
 		</div>
 	</section>
-
-	<footer>
-		<div id="info" *ngIf="info">
-			<div class="container">
-				<h1>Quiz Nautico Base</h1>
-				<p>
-					Quest'applicazione è basata sui quiz pubblicati/aggiornati dalla
-					<a href="http://www.guardiacostiera.gov.it/genova" title="Guardia Costiera di Genova" target="_blank">Guardia Costiera di Genova</a>					il 21.07.2016.<br> Per eventuali errori e/o suggerimenti
-					<a href="https://github.com/dvdvnl/quiz-nautico-base/issues" target="_blank">seguire questo link</a>.
-				</p>
-				<h2>Risorse e link utili</h2>
-				<ul>
-					<li>
-						<i class="fa fa-fw fa-github"></i> <a href="https://github.com/dvdvnl/quiz-nautico-base" target="_blank">Repository</a>
-					</li>
-					<li>
-						<i class="fa fa-fw fa-font-awesome"></i>
-						<a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a>
-					</li>
-				</ul>
-				<p class="text-center small split">
-					<a href="http://davole.com" title="davole.com" target="_blank"><img src="assets/davole.png" alt="www.davole.com"> by davole</a>
-				</p>
-			</div>
-		</div>
-
-		<div id="footer" class="container text-center" [ngClass]="{'small':!info}">
-			<span title="Informazioni" (click)="info = !info"><i class="fa fa-fw fa-anchor"></i></span>
-			<a href="#quiz" title="Torna in alto" class="pull-right"><i class="fa fa-fw fa-arrow-up"></i></a>
-		</div>
-	</footer>
 
 </section>

@@ -3702,15 +3702,15 @@
         "ans": [
             {
                 "mark": false,
-                "txt": "S = 20 MigliaC = 20 litri/hV = 10 NodiQ = 26 litri."
+                "txt": "S = 20 Miglia; C = 20 litri/h; V = 10 Nodi; Q = 26 litri."
             },
             {
                 "mark": true,
-                "txt": "S = 15 MigliaC = 15 litri/hV = 15 NodiQ = 19,5 litri."
+                "txt": "S = 15 Miglia; C = 15 litri/h; V = 15 Nodi; Q = 19,5 litri."
             },
             {
                 "mark": false,
-                "txt": "S = 8 MigliaC = 20 litri/hV = 15 NodiQ = 25 litri."
+                "txt": "S = 8 Miglia; C = 20 litri/h; V = 15 Nodi; Q = 25 litri."
             }
         ]
     },
@@ -3720,15 +3720,15 @@
         "ans": [
             {
                 "mark": false,
-                "txt": "S = 10 MigliaC = 15 litri/hV = 15 NodiQ = 19,5 litri."
+                "txt": "S = 10 Miglia; C = 15 litri/h; V = 15 Nodi; Q = 19,5 litri."
             },
             {
                 "mark": false,
-                "txt": "S = 4 MigliaC = 10 litri/hV = 7 NodiQ = 15 litri."
+                "txt": "S = 4 Miglia; C = 10 litri/h; V = 7 Nodi; Q = 15 litri."
             },
             {
                 "mark": true,
-                "txt": "S = 10 MigliaC = 10 litri/hV = 10 NodiQ = 13,0 litri."
+                "txt": "S = 10 Miglia; C = 10 litri/h; V = 10 Nodi; Q = 13,0 litri."
             }
         ]
     },
@@ -3738,15 +3738,15 @@
         "ans": [
             {
                 "mark": true,
-                "txt": "S = 20 MigliaC = 10 litri/hV = 10 NodiQ = 26 litri"
+                "txt": "S = 20 Miglia; C = 10 litri/h; V = 10 Nodi; Q = 26 litri"
             },
             {
                 "mark": false,
-                "txt": "S = 51 MigliaC = 15 litri/hV = 17 NodiQ = 43 litri"
+                "txt": "S = 51 Miglia; C = 15 litri/h; V = 17 Nodi; Q = 43 litri"
             },
             {
                 "mark": false,
-                "txt": "S = 8 MigliaC = 20 litri/hV = 16 NodiQ = 25 litri"
+                "txt": "S = 8 Miglia; C = 20 litri/h; V = 16 Nodi; Q = 25 litri"
             }
         ]
     },
@@ -3962,7 +3962,7 @@
             },
             {
                 "mark": false,
-                "txt": "16,9 litri orari. 3. Regolamento di sicurezza con particolare riferimento alle dotazioni di visite e loro periodicità."
+                "txt": "16,9 litri orari."
             }
         ]
     },
@@ -7764,7 +7764,7 @@
     },
     {
         "id": 429,
-        "txt": "La bandiera H (Hotel ) in figura a fianco, prescritta dal Codice Internazionale dei Segnali, è esposta da un'unità per indicare che:",
+        "txt": "La bandiera H (Hotel) in figura a fianco, prescritta dal Codice Internazionale dei Segnali, è esposta da un'unità per indicare che:",
         "fig": true,
         "ans": [
             {
@@ -8860,7 +8860,7 @@
     },
     {
         "id": 489,
-        "txt": "La bandiera A (Alfa ) in figura a fianco, prescritta dal Codice Internazionale dei Segnali, è esposta da un'unità per indicare che:",
+        "txt": "La bandiera A (Alfa) in figura a fianco, prescritta dal Codice Internazionale dei Segnali, è esposta da un'unità per indicare che:",
         "fig": true,
         "ans": [
             {
@@ -10189,7 +10189,7 @@
             },
             {
                 "mark": false,
-                "txt": "appennellato. 5. Bollettini meteorologici per la navigazione marittima. - Strumenti"
+                "txt": "appennellato."
             }
         ]
     },
@@ -10819,7 +10819,7 @@
             },
             {
                 "mark": false,
-                "txt": "ffornisce previsioni relative alle 48 ore successive a quelle delle \"Osservazioni\", con intervalli di 6 ore."
+                "txt": "fornisce previsioni relative alle 48 ore successive a quelle delle \"Osservazioni\", con intervalli di 6 ore."
             }
         ]
     },
@@ -18813,7 +18813,7 @@
             },
             {
                 "mark": true,
-                "txt": "è consentita la navigazione, ma bisogna prestare attenzione ad un determinato pericolo. 7. a) Leggi e regolamenti che disciplinano la navigazione da diporto - Codice riferimento a: - obblighi, poteri e doveri del comandante; - attribuzioni dell’Autorità Marittima e della navigazione interna; - Ordinanze delle Autorità Marittime locali;"
+                "txt": "è consentita la navigazione, ma bisogna prestare attenzione ad un determinato pericolo."
             }
         ]
     },
