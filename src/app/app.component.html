@@ -54,7 +54,7 @@
 
 
 	<section id="questions" class="container">
-		<div class="row" *ngFor="let q of qs | objectfilter:search:['index']" [ngClass]="{'success':isCorrect(q.id), 'danger':!isCorrect(q.id) && isAnswered(q.id), 'hidden':(isAnswered(q.id) && hideAnswered) || (isCorrect(q.id)  && hideCorrect)}">
+		<div [attr.id]="q.id" class="row" *ngFor="let q of qs | objectfilter:search:['index']" [ngClass]="{'success':isCorrect(q.id), 'danger':!isCorrect(q.id) && isAnswered(q.id), 'hidden':(isAnswered(q.id) && hideAnswered) || (isCorrect(q.id)  && hideCorrect)}">
 			<div class="col-sm-1">
 				{{q.id}}
 			</div>
