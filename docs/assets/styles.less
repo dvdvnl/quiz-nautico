@@ -1,0 +1,103 @@
+@import "../../node_modules/font-awesome/less/font-awesome";
+@import "../../node_modules/bootstrap/less/bootstrap";
+@import "variables";
+
+input:focus{box-shadow: none !important;}
+
+h1{font-size: 145%;}
+
+#quiz{
+	margin-bottom: @def * 10;
+	overflow-x: auto;
+
+	header{
+		background: @gray-darker;
+		box-sizing: content-box;
+		color: @gray-light;
+		height: @header-height;
+		line-height: @header-height;
+		padding: @def / 2;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 2;
+
+		#title{font-size: 125%;}
+		#menu-toggle{cursor: pointer;}
+	}
+
+	#sidebar{
+		background: fadeout(@gray-lighter, 10);
+		bottom: 0;
+		padding: @def;
+		position: fixed;
+		right: 0;
+		top: @header-height + @def;
+		z-index: 1;
+
+		@media(max-width:@screen-sm-min){width: 100%}
+		@media(min-width:@screen-sm-min){width: calc(100%/3)}
+
+		#title{text-align: center;}		
+		#credits{
+			bottom: @def;
+			right: 0;
+			position: absolute;
+			width: 100%;
+
+			img:not(:hover), i:not(:hover){
+    			filter: grayscale(100%);
+				-webkit-filter: grayscale(100%);
+			}
+		}
+	}
+
+
+	#questions{
+		margin-top: @header-height + @def;
+
+		div.row{
+			vertical-align: top;
+			padding: @def / 2;
+
+			+ .row{border-top: 1px solid @gray-light;}
+			&:nth-child(odd){background: @gray-lighter;}
+			&.success{background: @success-bg;}
+			&.danger{background: @danger-bg;}
+			div:nth-child(1){font-weight: bold;}
+			p.q{font-weight: bold;}
+			ul.ans{
+				list-style-type: lower-alpha;
+
+				li{
+					cursor: pointer;
+					line-height: 125%;
+
+					+ li{
+						border-top: 1px solid @gray-light;
+						margin-top: @def;
+						padding-top: @def;
+					}
+
+					&.success{color:@success;}
+					&.clicked{
+						color: @danger;
+						font-weight: bold;
+
+						&.success{color:@success;}
+					}
+				}
+			}
+			.fig{
+				padding: @def 0;
+				@media (min-width: @screen-sm-min){text-align: right;}
+				@media (max-width: @screen-sm-min){text-align: center;}
+
+				img{
+					border: 1px solid @gray-lighter;
+					max-width: 100px;
+				}
+			}
+		}
+	}
+}
